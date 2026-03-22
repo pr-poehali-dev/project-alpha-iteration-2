@@ -29,42 +29,10 @@ export default function Index() {
       const containerWidth = scrollContainer.offsetWidth
       const currentSection = Math.round(currentScroll / containerWidth)
 
-      if (currentSection === 2 && pricingSectionRef.current) {
+      if (currentSection === 3 && pricingSectionRef.current) {
         const pricingSection = pricingSectionRef.current
         const isAtTop = pricingSection.scrollTop === 0
         const isAtBottom = pricingSection.scrollTop + pricingSection.clientHeight >= pricingSection.scrollHeight - 1
-
-        if (delta > 0 && !isAtBottom) {
-          return
-        }
-
-        if (delta < 0 && !isAtTop) {
-          return
-        }
-
-        if (delta < 0 && isAtTop) {
-          e.preventDefault()
-          scrollContainer.scrollTo({
-            left: 1 * containerWidth,
-            behavior: "smooth",
-          })
-          return
-        }
-
-        if (delta > 0 && isAtBottom) {
-          e.preventDefault()
-          scrollContainer.scrollTo({
-            left: 3 * containerWidth,
-            behavior: "smooth",
-          })
-          return
-        }
-      }
-
-      if (currentSection === 3 && aboutSectionRef.current) {
-        const aboutSection = aboutSectionRef.current
-        const isAtTop = aboutSection.scrollTop === 0
-        const isAtBottom = aboutSection.scrollTop + aboutSection.clientHeight >= aboutSection.scrollHeight - 1
 
         if (delta > 0 && !isAtBottom) {
           return
@@ -93,10 +61,10 @@ export default function Index() {
         }
       }
 
-      if (currentSection === 4 && contactSectionRef.current) {
-        const contactSection = contactSectionRef.current
-        const isAtTop = contactSection.scrollTop === 0
-        const isAtBottom = contactSection.scrollTop + contactSection.clientHeight >= contactSection.scrollHeight - 1
+      if (currentSection === 4 && aboutSectionRef.current) {
+        const aboutSection = aboutSectionRef.current
+        const isAtTop = aboutSection.scrollTop === 0
+        const isAtBottom = aboutSection.scrollTop + aboutSection.clientHeight >= aboutSection.scrollHeight - 1
 
         if (delta > 0 && !isAtBottom) {
           return
@@ -117,6 +85,38 @@ export default function Index() {
 
         if (delta > 0 && isAtBottom) {
           e.preventDefault()
+          scrollContainer.scrollTo({
+            left: 5 * containerWidth,
+            behavior: "smooth",
+          })
+          return
+        }
+      }
+
+      if (currentSection === 5 && contactSectionRef.current) {
+        const contactSection = contactSectionRef.current
+        const isAtTop = contactSection.scrollTop === 0
+        const isAtBottom = contactSection.scrollTop + contactSection.clientHeight >= contactSection.scrollHeight - 1
+
+        if (delta > 0 && !isAtBottom) {
+          return
+        }
+
+        if (delta < 0 && !isAtTop) {
+          return
+        }
+
+        if (delta < 0 && isAtTop) {
+          e.preventDefault()
+          scrollContainer.scrollTo({
+            left: 4 * containerWidth,
+            behavior: "smooth",
+          })
+          return
+        }
+
+        if (delta > 0 && isAtBottom) {
+          e.preventDefault()
           return
         }
       }
@@ -126,7 +126,7 @@ export default function Index() {
       if (Math.abs(delta) > 10) {
         let targetSection = currentSection
         if (delta > 0) {
-          targetSection = Math.min(currentSection + 1, 4)
+          targetSection = Math.min(currentSection + 1, 5)
         } else {
           targetSection = Math.max(currentSection - 1, 0)
         }
@@ -179,6 +179,71 @@ export default function Index() {
         <section id="features" className="flex min-w-full snap-start items-center justify-center px-4 py-20">
           <div className="mx-auto max-w-7xl w-full">
             <Feature />
+          </div>
+        </section>
+
+        <section id="gallery" className="flex min-w-full snap-start items-center justify-center px-4 py-20">
+          <div className="mx-auto w-full max-w-6xl">
+            <div className="mx-auto mb-10 max-w-2xl text-center">
+              <h2 className="text-4xl font-extrabold tracking-tight lg:text-6xl text-white [text-shadow:_0_4px_20px_rgb(0_0_0_/_60%)] font-open-sans-custom">
+                Наши работы
+              </h2>
+              <p className="text-gray-300 mt-4 text-sm md:text-base font-open-sans-custom [text-shadow:_0_2px_10px_rgb(0_0_0_/_50%)]">
+                Реальные фото из нашего сервиса — видно качество и внимание к деталям
+              </p>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+              <div className="relative overflow-hidden rounded-xl aspect-[3/4] col-span-1 row-span-2 group">
+                <img
+                  src="https://cdn.poehali.dev/files/0a94c62f-abef-48c9-ad0d-b84054b8c542.jpg"
+                  alt="Подготовка автомобиля"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                  <span className="text-white text-sm font-open-sans-custom">Подготовка к бронированию</span>
+                </div>
+              </div>
+              <div className="relative overflow-hidden rounded-xl aspect-square group">
+                <img
+                  src="https://cdn.poehali.dev/files/bdb87756-a60d-4b6e-afa6-7d79d3c328b2.jpg"
+                  alt="Полировка кузова"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                  <span className="text-white text-sm font-open-sans-custom">Полировка кузова</span>
+                </div>
+              </div>
+              <div className="relative overflow-hidden rounded-xl aspect-square group">
+                <img
+                  src="https://cdn.poehali.dev/files/800b3ca2-401b-42db-a8d1-c4fedae90b54.jpg"
+                  alt="Наклейка PPF плёнки"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                  <span className="text-white text-sm font-open-sans-custom">Наклейка PPF плёнки</span>
+                </div>
+              </div>
+              <div className="relative overflow-hidden rounded-xl aspect-square group">
+                <img
+                  src="https://cdn.poehali.dev/files/32a70e2f-09ca-4b25-ab48-6840c21145e4.jpg"
+                  alt="Бронирование капота"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                  <span className="text-white text-sm font-open-sans-custom">Бронирование капота</span>
+                </div>
+              </div>
+              <div className="relative overflow-hidden rounded-xl aspect-square group">
+                <img
+                  src="https://cdn.poehali.dev/files/68395596-f76e-4718-8456-c67f0e32eacc.jpg"
+                  alt="Результат работы"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                  <span className="text-white text-sm font-open-sans-custom">Готовый результат</span>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
