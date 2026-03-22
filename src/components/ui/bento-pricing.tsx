@@ -91,7 +91,7 @@ export function BentoPricing() {
         </div>
         <div className="flex items-center gap-3 p-3">
           <Badge variant="secondary" className="bg-white/10 text-white border-white/20 font-open-sans-custom text-xs">
-            ПРЕМИУМ
+            PPF ПОЛНЫЙ
           </Badge>
           <Badge
             variant="outline"
@@ -101,23 +101,23 @@ export function BentoPricing() {
           </Badge>
           <div className="ml-auto">
             <Button size="sm" className="bg-white text-black hover:bg-gray-100 font-open-sans-custom text-xs">
-              Подписаться
+              Записаться
             </Button>
           </div>
         </div>
         <div className="flex flex-col p-3 lg:flex-row">
           <div className="pb-2 lg:w-[30%]">
             <span className="font-mono text-3xl font-semibold tracking-tight text-white [text-shadow:_0_4px_20px_rgb(0_0_0_/_60%)]">
-              2 000 ₽
+              от 35 000 ₽
             </span>
-            <span className="text-gray-300 text-xs font-open-sans-custom">/мес</span>
+            <span className="text-gray-300 text-xs font-open-sans-custom"> / авто</span>
           </div>
           <ul className="text-gray-300 grid gap-2 text-xs lg:w-[70%] font-open-sans-custom">
             {[
-              "2 000 ₽ кредитов включено ежемесячно",
-              "Докупайте кредиты сверх месячного лимита",
-              "5x увеличенный лимит вложений",
-              "Импорт дизайнов из популярных инструментов",
+              "Бронирование всего кузова PPF-плёнкой",
+              "Самовосстанавливающееся покрытие",
+              "Гарантия 5 лет на плёнку",
+              "Защита от сколов, царапин и UV-излучения",
             ].map((f, i) => (
               <li key={i} className="flex items-center gap-2">
                 <Check className="w-[1.05rem] h-[1.05rem] text-white flex-shrink-0" strokeWidth={3} />
@@ -129,50 +129,53 @@ export function BentoPricing() {
       </div>
 
       <PricingCard
-        titleBadge="СТАРТ"
-        priceLabel="0 ₽"
+        titleBadge="PPF ЗОНЫ"
+        priceLabel="от 8 000 ₽"
+        priceSuffix=" / зона"
         features={[
-          "500 ₽ кредитов включено ежемесячно",
-          "Деплой приложений в облако",
-          "Визуальное редактирование",
-          "Синхронизация с Git",
+          "Капот, бампер или зеркала на выбор",
+          "Плёнка премиум-класса",
+          "Защита от сколов и царапин",
+          "Гарантия 3 года",
         ]}
         className="lg:col-span-3"
-        cta="Начать"
+        cta="Записаться"
       />
 
       <PricingCard
-        titleBadge="КОМАНДА"
-        priceLabel="3 000 ₽"
-        priceSuffix="/чел/мес"
+        titleBadge="ШУМОИЗОЛЯЦИЯ"
+        priceLabel="от 15 000 ₽"
+        priceSuffix=" / авто"
         features={[
-          "3 000 ₽ кредитов на участника ежемесячно",
-          "Единый биллинг и управление командой",
-          "Общие чаты и совместная работа",
+          "Виброизоляция дверей и пола",
+          "Шумопоглощающие материалы",
+          "Заметный результат с первой поездки",
         ]}
         className="lg:col-span-4"
+        cta="Записаться"
       />
 
       <PricingCard
-        titleBadge="БИЗНЕС"
-        priceLabel="10 000 ₽"
-        priceSuffix="/чел/мес"
-        features={["3 000 ₽ кредитов на участника ежемесячно", "Отключение обучения по умолчанию", "Полный доступ к API"]}
+        titleBadge="ТОНИРОВКА"
+        priceLabel="от 4 000 ₽"
+        priceSuffix=" / авто"
+        features={["Качественная тонировочная плёнка", "Защита от UV и перегрева", "Установка за 1 день"]}
         className="lg:col-span-4"
+        cta="Записаться"
       />
 
       <PricingCard
-        titleBadge="КОРПОРАЦИЯ"
+        titleBadge="КОМПЛЕКС"
         priceLabel="По запросу"
         priceSuffix=""
         features={[
-          "Отключение обучения по умолчанию",
-          "SAML SSO",
-          "Приоритетный доступ",
-          "Персональная поддержка",
+          "PPF + шумоизоляция + полировка",
+          "Химчистка салона в подарок",
+          "Тонировка и доп. оборудование",
+          "Персональный менеджер и скидка",
         ]}
         className="lg:col-span-8"
-        cta="Связаться"
+        cta="Рассчитать стоимость"
       />
     </div>
   )
