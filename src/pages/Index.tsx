@@ -11,13 +11,14 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { MailIcon, PhoneIcon, MapPinIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 
 export default function Index() {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const pricingSectionRef = useRef<HTMLDivElement>(null)
   const aboutSectionRef = useRef<HTMLDivElement>(null)
   const contactSectionRef = useRef<HTMLDivElement>(null)
+  const [lightbox, setLightbox] = useState<{ src: string; label: string } | null>(null)
 
   useEffect(() => {
     const scrollContainer = scrollContainerRef.current
@@ -182,17 +183,17 @@ export default function Index() {
           </div>
         </section>
 
-        <section id="gallery" className="flex min-w-full snap-start items-center justify-center px-4 py-20">
+        <section id="gallery" className="relative min-w-full snap-start overflow-y-auto px-4 pt-24 pb-8 hide-scrollbar" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
           <div className="mx-auto w-full max-w-6xl">
-            <div className="mx-auto mb-8 max-w-2xl text-center">
+            <div className="mx-auto mb-6 max-w-2xl text-center">
               <h2 className="text-4xl font-extrabold tracking-tight lg:text-6xl text-white [text-shadow:_0_4px_20px_rgb(0_0_0_/_60%)] font-open-sans-custom">
                 Наши работы
               </h2>
-              <p className="text-gray-300 mt-4 text-sm md:text-base font-open-sans-custom [text-shadow:_0_2px_10px_rgb(0_0_0_/_50%)]">
-                Реальные фото из нашего сервиса — видно качество и внимание к деталям
+              <p className="text-gray-300 mt-3 text-sm md:text-base font-open-sans-custom [text-shadow:_0_2px_10px_rgb(0_0_0_/_50%)]">
+                Нажмите на фото чтобы увеличить
               </p>
             </div>
-            <div className="flex gap-3 overflow-x-auto pb-2 hide-scrollbar" style={{ scrollbarWidth: "none" }}>
+            <div className="columns-2 md:columns-3 lg:columns-5 gap-2 space-y-2">
               {[
                 { src: "https://cdn.poehali.dev/files/3a157972-9fb2-47f1-8cc4-b7c358b858d0.jpg", label: "Матовое бронирование" },
                 { src: "https://cdn.poehali.dev/files/0bd45d3d-9a0a-45d3-8119-5d49402ef127.jpg", label: "Детейлинг кузова" },
@@ -210,13 +211,17 @@ export default function Index() {
                 { src: "https://cdn.poehali.dev/files/71d01989-e146-4214-ba50-45db3d7384ab.jpg", label: "Виброизоляция двери" },
                 { src: "https://cdn.poehali.dev/files/cabef499-bed7-4407-9ea0-4296eb29ff98.jpg", label: "Zeekr — матовое PPF" },
               ].map((photo, i) => (
-                <div key={i} className="relative flex-shrink-0 w-56 h-72 overflow-hidden rounded-xl group">
+                <div
+                  key={i}
+                  className="relative break-inside-avoid overflow-hidden rounded-xl cursor-zoom-in group"
+                  onClick={() => setLightbox(photo)}
+                >
                   <img
                     src={photo.src}
                     alt={photo.label}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-2">
                     <span className="text-white text-xs font-open-sans-custom">{photo.label}</span>
                   </div>
                 </div>
@@ -224,6 +229,28 @@ export default function Index() {
             </div>
           </div>
         </section>
+
+        {lightbox && (
+          <div
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
+            onClick={() => setLightbox(null)}
+          >
+            <div className="relative max-w-4xl max-h-[90vh] w-full" onClick={e => e.stopPropagation()}>
+              <img
+                src={lightbox.src}
+                alt={lightbox.label}
+                className="w-full h-full object-contain rounded-xl max-h-[80vh]"
+              />
+              <p className="text-white text-center mt-3 font-open-sans-custom text-sm opacity-80">{lightbox.label}</p>
+              <button
+                onClick={() => setLightbox(null)}
+                className="absolute -top-4 -right-4 bg-white/20 hover:bg-white/40 text-white rounded-full w-9 h-9 flex items-center justify-center backdrop-blur-sm transition-colors text-lg"
+              >
+                ✕
+              </button>
+            </div>
+          </div>
+        )}
 
         <section
           id="pricing"
