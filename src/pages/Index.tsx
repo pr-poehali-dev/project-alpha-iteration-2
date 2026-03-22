@@ -204,6 +204,11 @@ export default function Index() {
                 { src: "https://cdn.poehali.dev/files/800b3ca2-401b-42db-a8d1-c4fedae90b54.jpg", label: "Наклейка PPF плёнки" },
                 { src: "https://cdn.poehali.dev/files/32a70e2f-09ca-4b25-ab48-6840c21145e4.jpg", label: "Бронирование капота" },
                 { src: "https://cdn.poehali.dev/files/68395596-f76e-4718-8456-c67f0e32eacc.jpg", label: "Готовый результат" },
+                { src: "https://cdn.poehali.dev/files/9f11613a-eaa2-4563-a4c9-671804f62563.jpg", label: "Шумоизоляция пола Mercedes" },
+                { src: "https://cdn.poehali.dev/files/2477e1a6-1e48-4d47-b040-e20acd8879a5.jpg", label: "Шумоизоляция багажника" },
+                { src: "https://cdn.poehali.dev/files/68022ddb-df9f-4a02-b404-956e4ae0a1f8.jpg", label: "Шумоизоляция дверей" },
+                { src: "https://cdn.poehali.dev/files/71d01989-e146-4214-ba50-45db3d7384ab.jpg", label: "Виброизоляция двери" },
+                { src: "https://cdn.poehali.dev/files/cabef499-bed7-4407-9ea0-4296eb29ff98.jpg", label: "Zeekr — матовое PPF" },
               ].map((photo, i) => (
                 <div key={i} className="relative flex-shrink-0 w-56 h-72 overflow-hidden rounded-xl group">
                   <img
