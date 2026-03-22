@@ -184,7 +184,7 @@ export default function Index() {
 
         <section id="gallery" className="flex min-w-full snap-start items-center justify-center px-4 py-20">
           <div className="mx-auto w-full max-w-6xl">
-            <div className="mx-auto mb-10 max-w-2xl text-center">
+            <div className="mx-auto mb-8 max-w-2xl text-center">
               <h2 className="text-4xl font-extrabold tracking-tight lg:text-6xl text-white [text-shadow:_0_4px_20px_rgb(0_0_0_/_60%)] font-open-sans-custom">
                 Наши работы
               </h2>
@@ -192,57 +192,30 @@ export default function Index() {
                 Реальные фото из нашего сервиса — видно качество и внимание к деталям
               </p>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              <div className="relative overflow-hidden rounded-xl aspect-[3/4] col-span-1 row-span-2 group">
-                <img
-                  src="https://cdn.poehali.dev/files/0a94c62f-abef-48c9-ad0d-b84054b8c542.jpg"
-                  alt="Подготовка автомобиля"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                  <span className="text-white text-sm font-open-sans-custom">Подготовка к бронированию</span>
+            <div className="flex gap-3 overflow-x-auto pb-2 hide-scrollbar" style={{ scrollbarWidth: "none" }}>
+              {[
+                { src: "https://cdn.poehali.dev/files/3a157972-9fb2-47f1-8cc4-b7c358b858d0.jpg", label: "Матовое бронирование" },
+                { src: "https://cdn.poehali.dev/files/0bd45d3d-9a0a-45d3-8119-5d49402ef127.jpg", label: "Детейлинг кузова" },
+                { src: "https://cdn.poehali.dev/files/2f64cea6-cd81-4e90-a71e-02058b7a012c.jpg", label: "PPF — бок двери" },
+                { src: "https://cdn.poehali.dev/files/07c2a7e6-273e-4032-a3bf-192eedc97346.jpg", label: "Audi в сервисе" },
+                { src: "https://cdn.poehali.dev/files/6bcbce0d-4dc6-4d10-8541-a886aef81957.jpg", label: "Шумоизоляция Mercedes" },
+                { src: "https://cdn.poehali.dev/files/0a94c62f-abef-48c9-ad0d-b84054b8c542.jpg", label: "Подготовка к бронированию" },
+                { src: "https://cdn.poehali.dev/files/bdb87756-a60d-4b6e-afa6-7d79d3c328b2.jpg", label: "Полировка кузова" },
+                { src: "https://cdn.poehali.dev/files/800b3ca2-401b-42db-a8d1-c4fedae90b54.jpg", label: "Наклейка PPF плёнки" },
+                { src: "https://cdn.poehali.dev/files/32a70e2f-09ca-4b25-ab48-6840c21145e4.jpg", label: "Бронирование капота" },
+                { src: "https://cdn.poehali.dev/files/68395596-f76e-4718-8456-c67f0e32eacc.jpg", label: "Готовый результат" },
+              ].map((photo, i) => (
+                <div key={i} className="relative flex-shrink-0 w-56 h-72 overflow-hidden rounded-xl group">
+                  <img
+                    src={photo.src}
+                    alt={photo.label}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+                    <span className="text-white text-xs font-open-sans-custom">{photo.label}</span>
+                  </div>
                 </div>
-              </div>
-              <div className="relative overflow-hidden rounded-xl aspect-square group">
-                <img
-                  src="https://cdn.poehali.dev/files/bdb87756-a60d-4b6e-afa6-7d79d3c328b2.jpg"
-                  alt="Полировка кузова"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                  <span className="text-white text-sm font-open-sans-custom">Полировка кузова</span>
-                </div>
-              </div>
-              <div className="relative overflow-hidden rounded-xl aspect-square group">
-                <img
-                  src="https://cdn.poehali.dev/files/800b3ca2-401b-42db-a8d1-c4fedae90b54.jpg"
-                  alt="Наклейка PPF плёнки"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                  <span className="text-white text-sm font-open-sans-custom">Наклейка PPF плёнки</span>
-                </div>
-              </div>
-              <div className="relative overflow-hidden rounded-xl aspect-square group">
-                <img
-                  src="https://cdn.poehali.dev/files/32a70e2f-09ca-4b25-ab48-6840c21145e4.jpg"
-                  alt="Бронирование капота"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                  <span className="text-white text-sm font-open-sans-custom">Бронирование капота</span>
-                </div>
-              </div>
-              <div className="relative overflow-hidden rounded-xl aspect-square group">
-                <img
-                  src="https://cdn.poehali.dev/files/68395596-f76e-4718-8456-c67f0e32eacc.jpg"
-                  alt="Результат работы"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                  <span className="text-white text-sm font-open-sans-custom">Готовый результат</span>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>
