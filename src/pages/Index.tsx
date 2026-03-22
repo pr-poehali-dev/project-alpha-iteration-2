@@ -156,8 +156,16 @@ export default function Index() {
         className="relative z-10 flex h-screen w-full overflow-x-auto overflow-y-hidden scroll-smooth snap-x snap-mandatory hide-scrollbar"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
-        <section id="home" className="flex min-w-full snap-start items-center justify-center px-4 py-20">
-          <div className="mx-auto max-w-4xl">
+        <section id="home" className="relative flex min-w-full snap-start items-center justify-center px-4 py-20 overflow-hidden">
+          <div className="absolute inset-0 z-0">
+            <img
+              src="https://cdn.poehali.dev/files/0118d24d-e400-4310-962f-075e6d1b460f.jpg"
+              alt="Стиль Detailing"
+              className="w-full h-full object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-black/65" />
+          </div>
+          <div className="relative z-10 mx-auto max-w-4xl">
             <div className="text-center px-0 leading-5">
               <h1 className="mb-8 text-balance text-5xl tracking-tight text-white [text-shadow:_0_4px_20px_rgb(0_0_0_/_60%)] md:text-6xl lg:text-8xl">
                 <span className="font-open-sans-custom not-italic">Защита.</span>{" "}
@@ -331,17 +339,12 @@ export default function Index() {
                 {
                   icon: PhoneIcon,
                   label: "Телефон",
-                  value: "+7 (843) 000-00-00",
-                },
-                {
-                  icon: MailIcon,
-                  label: "Почта",
-                  value: "info@ppf-kazan.ru",
+                  value: "8 903 657 8241",
                 },
                 {
                   icon: MapPinIcon,
                   label: "Адрес",
-                  value: "Казань, ул. Автомобильная, 1",
+                  value: "Казань, ул. Архангельская, 2к1",
                   className: "col-span-2",
                 },
               ]}
